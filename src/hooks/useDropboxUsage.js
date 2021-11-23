@@ -2,10 +2,7 @@ import useSWR from "swr";
 import { fetcher } from "../lib/fetcher";
 
 export default function useDropboxUsage() {
-  const { data, error } = useSWR(
-    "http://localhost:8888/.netlify/functions/fetchDropboxUsage",
-    fetcher
-  );
+  const { data, error } = useSWR("/api/fetchDropboxUsage", fetcher);
 
   return {
     data: data,

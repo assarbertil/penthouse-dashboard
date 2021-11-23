@@ -1,11 +1,8 @@
 import useSWR from "swr";
-import { fetcher } from "../lib/fetcher";
+import { fetcher } from "@/lib/fetcher";
 
 export default function useTwitterTrends() {
-  const { data, error } = useSWR(
-    "http://localhost:8888/.netlify/functions/fetchTwitterTrends",
-    fetcher
-  );
+  const { data, error } = useSWR("/api/fetchTwitterTrends", fetcher);
 
   return {
     data: data,

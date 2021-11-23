@@ -2,7 +2,7 @@ const fetch = require("node-fetch");
 
 const twitterToken = process.env.TWITTER_TOKEN;
 
-const handler = async event => {
+export default async function handler(req, res) {
   const options = {
     method: "GET",
     redirect: "follow",
@@ -21,15 +21,5 @@ const handler = async event => {
     options
   ).then(res => res.json());
 
-  return {
-    statusCode: 200,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Headers": "Content-Type",
-      "Access-Control-Allow-Methods": "GET, POST",
-    },
-    body: JSON.stringify({ globalResponse, swedenResponse }),
-  };
-};
-
-module.exports = { handler };
+  res.status(200).json({ globalResponse, swedenResponse });
+}

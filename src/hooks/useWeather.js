@@ -4,7 +4,7 @@ import { useContext } from "react";
 
 import { GeoContext } from "../contexts/geoContext";
 
-const weatherAPIKey = process.env.REACT_APP_WEATHER_API_KEY;
+const weatherAPIKey = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
 
 export default function useWeather() {
   const {
