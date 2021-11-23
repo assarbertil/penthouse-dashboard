@@ -5,8 +5,6 @@ import EncomeGlobeElement from "./elements/EncomGlobeElement";
 import StockPriceElement from "./elements/StockPriceElement";
 import TwitterTrendsElement from "./elements/TwitterTrendsElement";
 import NewsFeedElement from "./elements/NewsFeedElement";
-// import MiscGridDataElement from "./elements/MiscGridDataElement/MiscGridDataElement";
-import ElementHeader from "./elements/utilities/ElementHeader";
 
 export default function Layout() {
   return (

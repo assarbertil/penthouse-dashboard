@@ -1,10 +1,10 @@
-import Layout from "@/components/Layout";
+import GridLayout from "@/components/GridLayout";
 import SplashScreen from "@/components/SplashScreen";
 
 export default function Home() {
   return (
     <SplashScreen>
-      <Layout />
+      <GridLayout />
     </SplashScreen>
   );
 }
