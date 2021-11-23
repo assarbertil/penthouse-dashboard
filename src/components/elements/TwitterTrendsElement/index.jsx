@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import useTwitterTrends from "../../../hooks/useTwitterTrends";
+import useTwitterTrends from "@/hooks/useTwitterTrends";
 import TrendChart from "./TrendChart";
 import ElementHeader from "../utilities/ElementHeader";
 

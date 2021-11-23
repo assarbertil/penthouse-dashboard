@@ -1,4 +1,4 @@
-import useWeater from "../../../hooks/useWeather";
+import useWeater from "@/hooks/useWeather";
 
 export default function CurrentWeather() {
   const { data } = useWeater();

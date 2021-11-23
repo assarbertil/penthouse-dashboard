@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-import useStockPrice from "../../../hooks/useStockPrice";
+import useStockPrice from "@/hooks/useStockPrice";
 
 export default function StockPriceInfoCard() {
   const { data } = useStockPrice();

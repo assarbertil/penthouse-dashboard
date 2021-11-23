@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 
-import useWeater from "../hooks/useWeather";
-import useStockPrice from "../hooks/useStockPrice";
-import useStockData from "../hooks/useStockData";
-import useDropboxUsage from "../hooks/useDropboxUsage";
-import useTwitterTrends from "../hooks/useTwitterTrends";
-import useNews from "../hooks/useNews";
-import Logo from "../assets/dashboard-block_xl-dark.svg";
+import useWeater from "@/hooks/useWeather";
+import useStockPrice from "@/hooks/useStockPrice";
+import useStockData from "@/hooks/useStockData";
+import useDropboxUsage from "@/hooks/useDropboxUsage";
+import useTwitterTrends from "@/hooks/useTwitterTrends";
+import useNews from "@/hooks/useNews";
+import Logo from "@/public/assets/icons/dashboard-block_xl-dark.svg";
 
 export default function SplashScreen(props) {
   const [fadeCountDown, setFadeCountDown] = useState(false);

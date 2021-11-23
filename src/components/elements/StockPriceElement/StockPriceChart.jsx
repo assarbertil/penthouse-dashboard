@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import Chart from "react-apexcharts";
+import dynamic from "next/dynamic";
+const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-import useStockData from "../../../hooks/useStockData";
+import useStockData from "@/hooks/useStockData";
 
 export default function StockPriceChart() {
   const { data } = useStockData();
@@ -105,7 +106,7 @@ export default function StockPriceChart() {
 
   return (
     <div className="col-span-5 row-span-3 ">
-      {renderChart && (
+      {renderChart && typeof window !== "undefined" && (
         <Chart
           options={options}
           series={series}

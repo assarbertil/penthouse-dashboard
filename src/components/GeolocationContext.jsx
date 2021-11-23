@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+/* import { useEffect, useState } from "react";
 import { GeoContext } from "../contexts/geoContext";
 
 export default function GeolocationContext({ children }) {
@@ -16,3 +16,4 @@ export default function GeolocationContext({ children }) {
     </GeoContext.Provider>
   );
 }
+ */

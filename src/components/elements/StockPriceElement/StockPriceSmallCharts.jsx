@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import Chart from "react-apexcharts";
+import dynamic from "next/dynamic";
+const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-import useStockData from "../../../hooks/useStockData";
+import useStockData from "@/hooks/useStockData";
 
 export default function StockPriceSmallCharts() {
   const { data } = useStockData();
@@ -92,7 +93,7 @@ export default function StockPriceSmallCharts() {
     <div className="col-span-5 row-span-1 pl-4 text-xs text-gray-500 uppercase">
       <div className="flex items-center w-full justify-evenly">
         <h1>Open</h1>
-        {renderChart && (
+        {renderChart && typeof window !== "undefined" && (
           <Chart options={options} series={open} width="72px" height="24px" />
         )}
         <h1>High</h1>

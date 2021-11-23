@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import useDropboxUsage from "../../../hooks/useDropboxUsage";
+import useDropboxUsage from "@/hooks/useDropboxUsage";
 
 export default function DropboxUsage() {
   const [usageFormatted, setUsageFormatted] = useState("1");

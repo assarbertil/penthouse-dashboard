@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import Chart from "react-apexcharts";
+import dynamic from "next/dynamic";
+const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 export default function TrendChart({ id, data, labelNames }) {
   const variants = {
@@ -74,7 +75,7 @@ export default function TrendChart({ id, data, labelNames }) {
       variants={variants}
       transition={transition}
     >
-      {labelNames && (
+      {labelNames && typeof window !== "undefined" && (
         <Chart
           options={options}
           series={data}

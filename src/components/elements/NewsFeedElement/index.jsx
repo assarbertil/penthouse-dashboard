@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-import useNews from "../../../hooks/useNews";
+import useNews from "@/hooks/useNews";
 import ElementHeader from "../utilities/ElementHeader";
 
 export default function NewsFeedElement() {

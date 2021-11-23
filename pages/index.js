@@ -1,5 +1,5 @@
-import Layout from "./components/Layout";
-import SplashScreen from "./components/SplashScreen";
+import Layout from "@/components/Layout";
+import SplashScreen from "@/components/SplashScreen";
 
 export default function Home() {
   return (
