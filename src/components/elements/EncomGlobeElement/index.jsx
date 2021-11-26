@@ -1,72 +1,75 @@
 import { useEffect } from "react";
+import { globeData } from "./globeData";
+import { grid } from "./grid";
 
 export default function EncomGlobeElement() {
   // useEffect(() => {
-  //   var globe,
-  //     globeCount = 0;
-  //   var globalSatelliteColor = "#ff0000";
+  //   if (typeof window !== "undefined") {
+  //     var globe,
+  //       globeCount = 0;
+  //     var globalSatelliteColor = "#ff0000";
 
-  //   const containerDimensions = {
-  //     width: document.getElementById("container").offsetWidth,
-  //     height: document.getElementById("container").offsetHeight,
-  //   };
+  //     const containerDimensions = {
+  //       width: document.getElementById("container").offsetWidth,
+  //       height: document.getElementById("container").offsetHeight,
+  //     };
 
-  //   function createGlobe() {
-  //     var newData = [];
-  //     globeCount++;
-  //     document.getElementById("globe").innerHTML = "";
+  //     function createGlobe() {
+  //       var newData = [];
+  //       globeCount++;
+  //       document.getElementById("globe").innerHTML = "";
 
-  //     newData = window.data.slice();
+  //       newData = window.data.slice();
 
-  //     globe = new window.ENCOM.Globe(
-  //       containerDimensions.width,
-  //       containerDimensions.height,
-  //       {
-  //         font: "Inter",
-  //         data: newData, // copy the data array
-  //         tiles: window.grid.tiles,
-  //         baseColor: "#7DD3FC",
-  //         markerColor: "#fff",
-  //         pinColor: "#8FD8D8",
-  //         satelliteColor: globalSatelliteColor,
-  //         scale: 1.1,
-  //         dayLength: 28000,
-  //         introLinesDuration: 2000,
-  //         maxPins: 500,
-  //         maxMarkers: 200,
-  //         viewAngle: 0.1,
-  //       },
-  //     );
+  //       globe = new window.ENCOM.Globe(
+  //         containerDimensions.width,
+  //         containerDimensions.height,
+  //         {
+  //           font: "Inter",
+  //           data: newData, // copy the data array
+  //           tiles: window.grid.tiles,
+  //           baseColor: "#7DD3FC",
+  //           markerColor: "#fff",
+  //           pinColor: "#8FD8D8",
+  //           satelliteColor: globalSatelliteColor,
+  //           scale: 1.1,
+  //           dayLength: 28000,
+  //           introLinesDuration: 2000,
+  //           maxPins: 500,
+  //           maxMarkers: 200,
+  //           viewAngle: 0.1,
+  //         }
+  //       );
 
-  //     document.getElementById("globe").appendChild(globe.domElement);
-  //     globe.init(start);
-  //   }
-
-  //   function onWindowResize() {
-  //     globe.camera.aspect =
-  //       containerDimensions.width / containerDimensions.height;
-  //     globe.camera.updateProjectionMatrix();
-  //     globe.renderer.setSize(
-  //       containerDimensions.width,
-  //       containerDimensions.height,
-  //     );
-  //   }
-
-  //   function animate() {
-  //     if (globe) {
-  //       globe.tick();
-  //     }
-  //     window.lastTickTime = Date.now();
-  //     requestAnimationFrame(animate);
-  //   }
-
-  //   function start() {
-  //     if (globeCount === 1) {
-  //       animate();
+  //       document.getElementById("globe").appendChild(globe.domElement);
+  //       globe.init(start);
   //     }
 
-  //     /* add 6 satellites in random locations */
-  //     /* setTimeout(function () {
+  //     function onWindowResize() {
+  //       globe.camera.aspect =
+  //         containerDimensions.width / containerDimensions.height;
+  //       globe.camera.updateProjectionMatrix();
+  //       globe.renderer.setSize(
+  //         containerDimensions.width,
+  //         containerDimensions.height
+  //       );
+  //     }
+
+  //     function animate() {
+  //       if (globe) {
+  //         globe.tick();
+  //       }
+  //       window.lastTickTime = Date.now();
+  //       requestAnimationFrame(animate);
+  //     }
+
+  //     function start() {
+  //       if (globeCount === 1) {
+  //         animate();
+  //       }
+
+  //       /* add 6 satellites in random locations */
+  //       /* setTimeout(function () {
   //       var constellation = [];
   //       var opts = {
   //         coreColor: globalSatelliteColor,
@@ -85,31 +88,31 @@ export default function EncomGlobeElement() {
   //       globe.addConstellation(constellation, opts);
   //     }, 4000); */
 
-  //     /* add the connected points/line over globe */
-  //     setTimeout(function () {
-  //       globe.addMarker(49.25, -123.1, "Vancouver");
-  //       globe.addMarker(35.6895, 129.69171, "Tokyo", true);
-  //     }, 1000);
-  //   }
+  //       /* add the connected points/line over globe */
+  //       setTimeout(function () {
+  //         globe.addMarker(49.25, -123.1, "Vancouver");
+  //         globe.addMarker(35.6895, 129.69171, "Tokyo", true);
+  //       }, 1000);
+  //     }
 
-  //   /* if (!window.Detector.webgl) {
+  //     /* if (!window.Detector.webgl) {
   //     window.Detector.addGetWebGLMessage({
   //       parent: document.getElementById("container"),
   //     });
   //     return;
   //   } */
 
-  //   window.addEventListener("resize", onWindowResize, false);
+  //     window.addEventListener("resize", onWindowResize, false);
 
-  //   /* window.WebFontConfig = {
+  //     /* window.WebFontConfig = {
   //     google: {
   //       families: ["Inconsolata"],
   //     },
   //   }; */
-  //   createGlobe();
+  //     createGlobe();
 
-  //   /* web font stuff*/
-  //   /* var wf = document.createElement("script");
+  //     /* web font stuff*/
+  //     /* var wf = document.createElement("script");
   //   wf.src =
   //     ("https:" === document.location.protocol ? "https" : "http") +
   //     "://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js";
@@ -117,6 +120,7 @@ export default function EncomGlobeElement() {
   //   wf.async = "true";
   //   var s = document.getElementsByTagName("script")[0];
   //   s.parentNode.insertBefore(wf, s); */
+  //   }
   // }, []);
 
   return (

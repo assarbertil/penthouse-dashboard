@@ -1,5 +1,3 @@
-const fetch = require("node-fetch");
-
 const dropboxAPIKey = process.env.DROPBOX_API_KEY;
 
 export default async function handler(req, res) {

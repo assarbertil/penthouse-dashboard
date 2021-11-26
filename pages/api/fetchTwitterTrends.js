@@ -1,5 +1,3 @@
-const fetch = require("node-fetch");
-
 const twitterToken = process.env.TWITTER_TOKEN;
 
 export default async function handler(req, res) {
