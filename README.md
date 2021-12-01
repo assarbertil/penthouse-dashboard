@@ -13,7 +13,6 @@ You will need API keys from:
 - Open weather map
 - Alpha vantage
 - News API
-- Dropbox
 - Twitter
 
 Note that some of the APIs need a paid subscription to work outside of localhost.
@@ -23,5 +22,4 @@ Clone the repo and create your own `.env` file in the root directory with these 
 - `NEXT_PUBLIC_WEATHER_API_KEY="<your_key>"`
 - `NEXT_PUBLIC_STOCK_API_KEY="<your_key>"`
 - `NEXT_PUBLIC_NEWS_API_KEY="<your_key>"`
-- `DROPBOX_API_KEY="<your_key>"`
 - `TWITTER_TOKEN="<your_key>"`
