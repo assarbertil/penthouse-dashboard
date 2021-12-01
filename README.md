@@ -1,34 +1,33 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# penthouse-dashboard
 
-## Getting Started
+![](https://media.giphy.com/media/oGkyQ8R8Nqiy1SfaWS/giphy.gif)
 
-First, run the development server:
+A dashboard project i started to learn about fetching data using React and SWR. It displays non interactive elements and charts for various APIs such as weather and news. A list can be found below. It was inspired by user interfaces from movies like Tron: Legacy and Oblivion among others.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+I add on to this project every few weeks and it will not be finished for a while. I have not decided what to put in the last spot on the grid so any ideas are welcome.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Try it yourself
+This may not work perfectly and i will not provide any support.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+You will need API keys from:
+- Open weather map
+- Alpha vantage
+- News API
+- Dropbox
+- Twitter
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+And a netlify account to run the cloud functions.
 
-## Learn More
+Note that some of the APIs need a paid subscription to work outside of localhost.
 
-To learn more about Next.js, take a look at the following resources:
+Clone the repo and create your own `.env` file in the root directory with these key values:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `REACT_APP_WEATHER_API_KEY="<your_key>"`
+- `REACT_APP_STOCK_API_KEY="<your_key>"`
+- `REACT_APP_NEWS_API_KEY="<your_key>"`
+- `DROPBOX_API_KEY="<your_key>"`
+- `TWITTER_TOKEN="<your_key>"`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Log in to Netlify CLI and link the directory to a Netlify site. The directory contains the default cloud functions directory and should appear on your Netlify site's dashboard.
