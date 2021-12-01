@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 import useNews from "@/hooks/useNews";
@@ -58,7 +59,15 @@ export default function NewsFeedElement() {
         <div className="relative w-full">
           <div className="absolute w-full bg-blue-800 bg-opacity-50 h-11 mix-blend-multiply" />
           <div className="absolute w-full bg-blue-800 bg-opacity-50 h-11 mix-blend-color" />
-          <img className="object-cover w-full h-11" src={imgSrc} alt="" />
+          {/* <Image
+            className="w-full h-11"
+            // src={`/api/imageproxy?url=${encodeURIComponent(imgSrc)}`}
+            src={`/api/imageproxy?url=${imgSrc}`}
+            layout="fill"
+            objectFit="cover"
+            alt=""
+          />
+          {console.log(imgSrc)} */}
         </div>
       </div>
     </motion.div>

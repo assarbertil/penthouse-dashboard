@@ -6,31 +6,16 @@ import { GeolocationContext } from "../src/contexts/geoContext";
 
 function MyApp({ Component, pageProps }) {
   const fetchConfig = {
-    /*     refreshInterval: 600000,
-    focusThrottleInterval: 10000,
-    dedupingInterval: 10000,
-    revalidateOnMount: true,
-    revalidateOnFocus: true, */
-
-    onSuccess: (data, key) => console.log(data),
-    onError: err => console.log(err),
+    // onSuccess: (data, key) => console.log(data),
+    // onError: err => console.log(err),
   };
 
   return (
     <div className="h-full overflow-hidden antialiased bg-gray-900 select-none text-gray-50">
-      <Script src="/assets/globe/detector.js" strategy="beforeInteractive" />
-      <Script
-        src="@/public/assets/globe/data.js"
-        strategy="beforeInteractive"
-      />
-      <Script
-        src="@/public/assets/globe/grid.js"
-        strategy="beforeInteractive"
-      />
-      <Script
-        src="@/public/assets/globe/encom-globe.min.js"
-        strategy="beforeInteractive"
-      />
+      <Script src="globe/detector.js" strategy="afterInteractive" />
+      <Script src="globe/data.js" strategy="afterInteractive" />
+      <Script src="globe/grid.js" strategy="afterInteractive" />
+      <Script src="globe/encom-globe.min.js" strategy="afterInteractive" />
 
       <GeolocationContext>
         <SWRConfig value={fetchConfig}>

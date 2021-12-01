@@ -14,6 +14,7 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500&display=swap"
             rel="stylesheet"
           />
+          <link rel="icon" type="image/svg+xml" href="/favicon.svg"></link>
         </Head>
         <body>
           <Main />

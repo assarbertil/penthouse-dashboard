@@ -1,62 +1,33 @@
+import Image from "next/image";
 import { useEffect, useState } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { animate, motion, useAnimation, useMotionValue } from "framer-motion";
 
-import useWeater from "@/hooks/useWeather";
-import useStockPrice from "@/hooks/useStockPrice";
-import useStockData from "@/hooks/useStockData";
-import useDropboxUsage from "@/hooks/useDropboxUsage";
-import useTwitterTrends from "@/hooks/useTwitterTrends";
-import useNews from "@/hooks/useNews";
 import Logo from "@/public/assets/icons/dashboard-block_xl-dark.svg";
+import { useAllApiData } from "@/hooks/useAllApiData";
 
-export default function SplashScreen(props) {
-  const [fadeCountDown, setFadeCountDown] = useState(false);
+const Error = ({ children }) => <div className="text-red-600">{children}</div>;
 
-  const { data: weatherData, isError: weatherError } = useWeater();
-  const { data: stockDataData, isError: stockDataError } = useStockData();
-  const { data: stockPriceData, isError: stockPriceError } = useStockPrice();
-  const { data: dropBoxData, isError: dropboxError } = useDropboxUsage();
-  const { data: twitterData, isError: twitterError } = useTwitterTrends();
-  const { data: newsData, isError: newsError } = useNews();
+export default function SplashScreen({ children }) {
+  const [show, setShow] = useState(false);
+  const { data, errors } = useAllApiData();
 
   const controls = useAnimation();
-
-  useEffect(() => {
-    controls.start({ opacity: 1 });
-  }, [controls]);
-
+  useEffect(() => controls.start({ opacity: 1 }), [controls]);
   useEffect(() => {
     // process.env.NODE_ENV === "development" && setFadeCountDown(true);
-
-    if (
-      weatherData?.lat &&
-      stockDataData?.["Meta Data"] &&
-      stockPriceData?.["Realtime Currency Exchange Rate"] &&
-      dropBoxData?.used &&
-      twitterData?.globalResponse[0].trends &&
-      twitterData?.swedenResponse[0].trends &&
-      newsData?.status
-    ) {
+    if (data) {
+      // If all data is loaded, fade out the splash screen
       controls.start({ opacity: 0 });
-
-      setInterval(() => setFadeCountDown(true), 1000);
+      setInterval(() => setShow(true), 1000);
     }
-  }, [
-    controls,
-    weatherData,
-    stockDataData,
-    stockPriceData,
-    dropBoxData,
-    twitterData,
-    newsData,
-  ]);
+  }, [controls]);
 
-  if (fadeCountDown) {
-    return props.children;
+  if (show) {
+    return children;
   } else {
     return (
       <motion.div
-        className="flex flex-col items-center justify-center w-screen h-screen align-middle"
+        className="flex flex-col items-center justify-center h-screen"
         animate={controls}
         initial={{ opacity: 0 }}
         transition={{
@@ -65,36 +36,30 @@ export default function SplashScreen(props) {
           duration: 0.5,
         }}
       >
-        <img src={Logo} alt="" className="h-14" />
+        <Image src={Logo} alt="" height={64} layout="fixed" />
 
-        {weatherError ||
-        stockDataError ||
-        stockPriceError ||
-        dropboxError ||
-        twitterError ||
-        newsError ? (
+        {errors ? (
           <>
-            <span className="text-red-600">Fetching error</span>
-          </>
-        ) : null}
+            <div className="my-4">
+              {errors.map((i, index) => {
+                return i === null ? null : (
+                  <Error key={index}>{i.message}</Error>
+                );
+              })}
+            </div>
 
-        {(stockDataData?.["Information"] ||
-          stockPriceData?.["Information"] ||
-          twitterData?.globalResponse.errors ||
-          twitterData?.swedenResponse.errors) && (
-          <>
-            <span className="mt-4 text-red-600">ratelimited</span>
             <button
-              className="px-3 py-1 mt-4 text-gray-900 bg-red-600"
+              className="px-3 py-1 text-gray-900 bg-red-600"
               onClick={e => {
                 e.preventDefault();
-                setFadeCountDown(true);
+                controls.start({ opacity: 0 });
+                setInterval(() => setShow(true), 1000);
               }}
             >
               proceed
             </button>
           </>
-        )}
+        ) : null}
       </motion.div>
     );
   }
