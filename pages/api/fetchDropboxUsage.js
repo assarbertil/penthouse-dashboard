@@ -1,4 +1,4 @@
-const dropboxAPIKey = process.env.DROPBOX_API_KEY;
+const APIKey = process.env.DROPBOX_API_KEY;
 
 export default async function handler(req, res) {
   const response = await fetch(
@@ -7,7 +7,7 @@ export default async function handler(req, res) {
       method: "post",
       redirect: "follow",
       headers: {
-        Authorization: `Bearer ${dropboxAPIKey}`,
+        Authorization: `Bearer ${APIKey}`,
       },
     }
   ).then(response => response.json());
