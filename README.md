@@ -1,4 +1,4 @@
-# penthouse-dashboard
+# penthouse_dashboard
 
 ![](https://media.giphy.com/media/oGkyQ8R8Nqiy1SfaWS/giphy.gif)
 
