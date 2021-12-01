@@ -15,7 +15,7 @@ You will need API keys from:
 - News API
 - Twitter
 
-Note that some of the APIs need a paid subscription to work outside of localhost.
+> Note! Some of the APIs need a paid subscription to work outside of localhost.
 
 Clone the repo and create your own `.env` file in the root directory with these key values:
 
