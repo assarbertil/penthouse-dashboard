@@ -2,7 +2,7 @@ const colors = require("tailwindcss/colors");
 const { fontFamily } = require("tailwindcss/defaultTheme");
 
 module.exports = {
-  purge: [
+  content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
@@ -38,7 +38,7 @@ module.exports = {
       black: "black",
       white: "white",
       green: colors.green,
-      gray: colors.gray,
+      gray: colors.trueGray,
       red: colors.red,
       blue: colors.sky,
       yellow: colors.amber,

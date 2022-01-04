@@ -1,19 +1,17 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { clockContainer, clockItem } from "./animations";
+
+const Number = ({ content, dark }) => (
+  <motion.span
+    variants={clockItem}
+    className={dark ? "inline-block text-gray-500" : "inline-block"}
+  >
+    {content}
+  </motion.span>
+);
 
 export default function Clock() {
-  const variants = {
-    hidden: { width: "0%" },
-    visible: { width: "100%" },
-  };
-
-  const transition = {
-    type: "tween",
-    ease: "easeInOut",
-    duration: 1,
-    delay: 0.2,
-  };
-
   const leadingZero = n => `${n}`.padStart(2, "0");
 
   const [time, setTime] = useState(["0", "0", "0", "0"]);
@@ -32,20 +30,18 @@ export default function Clock() {
       setTime([hours, minutes, seconds, centseconds]);
     }, 10);
   }, []);
-  // Clock code
 
   return (
-    <motion.div
-      animate="visible"
+    <motion.h2
+      className="mb-4 overflow-hidden tracking-widest text-7xl font-chakra whitespace-nowrap text-gray-50"
+      variants={clockContainer}
       initial="hidden"
-      variants={variants}
-      transition={transition}
-      className="mb-4 overflow-hidden tracking-widest uppercase text-7xl font-chakra whitespace-nowrap"
+      animate="show"
     >
-      <h2>
-        {time[0]}:{time[1]}:{time[2]}
-        <span className="opacity-30">:{time[3]}</span>
-      </h2>
-    </motion.div>
+      <Number content={`${time[0]}`} />
+      <Number content={`:${time[1]}`} />
+      <Number content={`:${time[2]}`} />
+      <Number content={`:${time[3]}`} dark />
+    </motion.h2>
   );
 }

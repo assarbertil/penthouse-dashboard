@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 
 export default function EncomGlobeElement() {
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (typeof window !== "undefined") {
       var globe,
         globeCount = 0;
@@ -30,7 +30,7 @@ export default function EncomGlobeElement() {
             markerColor: "#fff",
             pinColor: "#8FD8D8",
             satelliteColor: globalSatelliteColor,
-            scale: 1.1,
+            scale: 1,
             dayLength: 28000,
             introLinesDuration: 2000,
             maxPins: 500,
@@ -122,7 +122,7 @@ export default function EncomGlobeElement() {
   }, []);
 
   return (
-    <div id="container" className="w-full h-95p">
+    <div id="container" className="w-full h-full">
       <div id="globe" />
     </div>
   );

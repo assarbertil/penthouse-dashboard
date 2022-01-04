@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { fetcher } from "../lib/fetcher";
+import { fetcher } from "@/lib/fetcher";
 
 export default function useStockPrice() {
   const APIKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;

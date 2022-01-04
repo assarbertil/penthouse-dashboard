@@ -14,13 +14,14 @@ export default function SplashScreen({ children }) {
   const controls = useAnimation();
   useEffect(() => controls.start({ opacity: 1 }), [controls]);
   useEffect(() => {
-    // process.env.NODE_ENV === "development" && setFadeCountDown(true);
-    if (data) {
-      // If all data is loaded, fade out the splash screen
-      controls.start({ opacity: 0 });
-      setInterval(() => setShow(true), 1000);
-    }
-  }, [controls]);
+    if (!data) return;
+
+    // If all data is loaded, fade out the splash screen
+    controls.start({ opacity: 0 });
+    setInterval(() => setShow(true), 1000);
+  }, [controls, data]);
+
+  if (process.env.NODE_ENV === "development") return children;
 
   if (show) {
     return children;
@@ -38,7 +39,7 @@ export default function SplashScreen({ children }) {
       >
         <Image src={Logo} alt="" height={64} layout="fixed" />
 
-        {errors ? (
+        {errors && (
           <>
             <div className="my-4">
               {errors.map((i, index) => {
@@ -59,7 +60,7 @@ export default function SplashScreen({ children }) {
               proceed
             </button>
           </>
-        ) : null}
+        )}
       </motion.div>
     );
   }

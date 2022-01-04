@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import DropboxUsage from "./DropboxUsage";
 import ElementHeader from "../utilities/ElementHeader";
 
-export default function BrandingElement() {
+export default function MiscGridData() {
   const variants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },

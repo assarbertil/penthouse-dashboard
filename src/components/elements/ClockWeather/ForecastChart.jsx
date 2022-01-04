@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-import useWeater from "../../../hooks/useWeather";
+import useWeater from "@/hooks/fetching/useWeather";
 
-export default function ForecastElement() {
+const SSR = typeof window === "undefined";
+
+export default function ForecastChart() {
   const { data } = useWeater();
   const [series, setSeries] = useState([]);
   const [renderChart, setRenderChart] = useState(false);
@@ -67,17 +69,17 @@ export default function ForecastElement() {
     setRenderChart(true);
   }, [data]);
 
+  if (!SSR) return null;
+
   return (
     <div>
-      {renderChart && typeof window !== "undefined" && (
-        <Chart
-          options={options}
-          series={series}
-          type="bar"
-          width="100%"
-          height="100%"
-        />
-      )}
+      <Chart
+        options={options}
+        series={series}
+        type="bar"
+        width="100%"
+        height="100%"
+      />
     </div>
   );
 }

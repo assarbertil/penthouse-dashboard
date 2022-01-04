@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
+import useTwitterTrends from "@/hooks/fetching/useTwitterTrends";
 
-import useTwitterTrends from "@/hooks/useTwitterTrends";
-import TrendChart from "./TrendChart";
-import ElementHeader from "../utilities/ElementHeader";
-
-export default function TwitterTrendsElement() {
+export const useFormatTwitterTrends = () => {
   const [globalSeries, setGlobalSeries] = useState([]);
   const [globalLabels, setGlobalLabels] = useState([]);
   const [renderGlobalChart, setRenderGlobalChart] = useState(false);
@@ -53,45 +50,12 @@ export default function TwitterTrendsElement() {
     }
   }, [data]);
 
-  /*   const TrendItem = ({ trend }) => (
-    <span className="inline-flex text-blue-700">{trend}</span>
-  ); */
-
-  return (
-    <>
-      <ElementHeader title="Twitter Trends" color="bg-blue-800" />
-      <div className="text-xs">
-        <div className="grid grid-cols-2">
-          {renderGlobalChart && (
-            <TrendChart
-              id="globalTrends"
-              data={globalSeries}
-              labelNames={globalLabels}
-            />
-          )}
-
-          {renderSwedenChart && (
-            <TrendChart
-              id="swedenTrends"
-              data={swedenSeries}
-              labelNames={swedenLabels}
-            />
-          )}
-        </div>
-        {/* {renderGlobalChart && (
-          <>
-            {data?.globalResponse &&
-              data.globalResponse[0].trends.map(i => (
-                <TrendItem key={i.name} trend={i.name}></TrendItem>
-              ))}
-
-            {data?.swedenResponse &&
-              data.swedenResponse[0].trends.map(i => (
-                <TrendItem key={i.name} trend={i.name}></TrendItem>
-              ))}
-          </>
-        )} */}
-      </div>
-    </>
-  );
-}
+  return {
+    globalSeries,
+    globalLabels,
+    renderGlobalChart,
+    swedenSeries,
+    swedenLabels,
+    renderSwedenChart,
+  };
+};

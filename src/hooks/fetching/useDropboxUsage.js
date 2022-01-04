@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { fetcher } from "../lib/fetcher";
+import { fetcher } from "@/lib/fetcher";
 
 export default function useDropboxUsage() {
   const { data, error } = useSWR("/api/fetchDropboxUsage", fetcher);

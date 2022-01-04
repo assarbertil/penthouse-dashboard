@@ -5,15 +5,21 @@ export default function GlobalRefreshTimer() {
   const controls = useAnimation();
 
   useEffect(() => {
-    function refetch() {
-      //this will repeat every 5 seconds
-      //you can reset counter here
+    let refetchInterval;
 
+    function refetch() {
       controls.stop();
       controls.set({ width: "100%" });
       controls.start({ width: "0%" });
     }
-    setInterval(refetch, 10000);
+    refetch();
+
+    if (!refetchInterval) refetchInterval = setInterval(refetch, 10000);
+
+    return () => {
+      clearInterval(refetchInterval);
+      refetchInterval = null;
+    };
   }, [controls]);
 
   return (

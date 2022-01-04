@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
-import useTwitterTrends from "@/hooks/useTwitterTrends";
-import useStockPrice from "@/hooks/useStockPrice";
-import useStockInfo from "@/hooks/useStockInfo";
-import useDropboxUsage from "@/hooks/useDropboxUsage";
-import useWeather from "@/hooks/useWeather";
-import useNews from "@/hooks/useNews";
+import useTwitterTrends from "@/hooks/fetching/useTwitterTrends";
+import useStockPrice from "@/hooks/fetching/useStockPrice";
+import useStockInfo from "@/hooks/fetching/useStockInfo";
+import useDropboxUsage from "@/hooks/fetching/useDropboxUsage";
+import useWeather from "@/hooks/fetching/useWeather";
+import useNews from "@/hooks/fetching/useNews";
 
 export const useAllApiData = () => {
   const { data: stockPriceData, isError: stockPriceError } = useStockPrice();
@@ -81,10 +81,11 @@ export const useAllApiData = () => {
     [allErrors]
   );
 
-  useEffect(
-    () => allData.length === 6 && console.log("All data arrived", allData),
-    [allData]
-  );
+  useEffect(() => {
+    if (false) {
+      allData.length === 6 && console.log("All data arrived", allData);
+    }
+  }, [allData]);
 
   return {
     data: allData.length === 6 && allData,

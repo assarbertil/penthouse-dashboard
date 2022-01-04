@@ -1,4 +1,4 @@
-export default function GridItem({ cols, rows, children, content }) {
+export default function GridItem({ cols, rows, content, x }) {
   const colsArr = ["col-span-1", "col-span-2", "col-span-3"];
   const rowsArr = [
     "row-span-1",
@@ -10,12 +10,8 @@ export default function GridItem({ cols, rows, children, content }) {
   ];
 
   return (
-    <div
-      className={`${colsArr[cols - 1]} ${rowsArr[rows - 1]} ${
-        children ? "border border-gray-800 p-1" : ""
-      }`}
-    >
-      {content}
+    <div className={`${colsArr[cols - 1]} ${rowsArr[rows - 1]}`}>
+      {!x && content}
     </div>
   );
 }

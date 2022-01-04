@@ -1,8 +1,8 @@
 import useSWR from "swr";
-import { fetcher } from "../lib/fetcher";
+import { fetcher } from "@/lib/fetcher";
 import { useContext } from "react";
 
-import { GeoContext } from "../contexts/geoContext";
+import { GeoContext } from "@/contexts/geoContext";
 
 const weatherAPIKey = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
 
