@@ -9,7 +9,8 @@ const Error = ({ children }) => <div className="text-red-600">{children}</div>;
 
 export default function SplashScreen({ children }) {
   const [show, setShow] = useState(false);
-  const { data, errors } = useAllApiData();
+  // const { data, errors } = useAllApiData();
+  const data = "hej";
 
   const controls = useAnimation();
   useEffect(() => controls.start({ opacity: 1 }), [controls]);

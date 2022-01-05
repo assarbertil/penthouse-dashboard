@@ -15,3 +15,8 @@ export const ClockWeather = () => (
     <ForecastChart />
   </ElementContainer>
 );
+
+/**
+ * @todo
+ * Gör animationer för forecastChart
+ */

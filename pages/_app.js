@@ -6,7 +6,7 @@ import { GeolocationContext } from "../src/contexts/geoContext";
 
 function MyApp({ Component, pageProps }) {
   const fetchConfig = {
-    // onSuccess: (data, key) => console.log(data),
+    onSuccess: (data, key) => console.log(data),
     // onError: err => console.log(err),
   };
 
