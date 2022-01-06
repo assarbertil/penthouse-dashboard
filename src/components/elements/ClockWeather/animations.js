@@ -3,9 +3,9 @@ export const clockContainer = {
 };
 
 export const clockItem = {
-  hidden: { transform: "rotateX(90deg)", opacity: 0 },
+  hidden: { rotateX: 90, opacity: 0 },
   show: {
-    transform: "rotateX(0deg)",
+    rotateX: 0,
     opacity: 1,
     transition: { duration: 0.6, ease: "easeOut" },
   },

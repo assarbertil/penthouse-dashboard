@@ -42,7 +42,7 @@ export default function CurrentWeather() {
   return (
     <div className="h-14">
       <motion.div
-        className="flex justify-between h-full text-xs uppercase border-t border-b border-gray-400"
+        className="flex justify-between h-full text-xs uppercase border-t border-b border-gray-400 will-change-transform"
         variants={weatherContainer}
         initial="hidden"
         animate="show"

@@ -93,13 +93,6 @@ export default function EncomGlobeElement() {
         }, 1000);
       }
 
-      /* if (!window.Detector.webgl) {
-      window.Detector.addGetWebGLMessage({
-        parent: document.getElementById("container"),
-      });
-      return;
-    } */
-
       window.addEventListener("resize", onWindowResize, false);
 
       /* window.WebFontConfig = {

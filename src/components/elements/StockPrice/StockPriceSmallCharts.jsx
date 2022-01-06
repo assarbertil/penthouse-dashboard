@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
-
 import useStockInfo from "@/hooks/fetching/useStockInfo";
+import { smallChartsOptions } from "./chartOptions";
+import { motion } from "framer-motion";
+import { gridItem } from "./animations";
 
 export default function StockPriceSmallCharts() {
   const { data } = useStockInfo();
@@ -13,47 +15,10 @@ export default function StockPriceSmallCharts() {
   const [close, setClose] = useState([]);
   const [volume, setVolume] = useState([]);
   const [renderChart, setRenderChart] = useState(false);
-  const [options] = useState({
-    chart: {
-      background: "transparent",
-      foreColor: "#f5f5f5",
-      toolbar: { show: false },
-      zoom: { enabled: false },
-      fontFamily: "Inter",
-      selection: { enabled: false },
-      animations: { enabled: true, speed: 2000 },
-      sparkline: { enabled: true },
-    },
-    stroke: {
-      show: true,
-      curve: "straight",
-      lineCap: "butt",
-      colors: "#0C4A6E",
-      width: 2,
-      dashArray: 0,
-    },
-
-    dataLabels: { enabled: false },
-    fill: { colors: "#0C4A6E" },
-    tooltip: { enabled: false },
-    xaxis: {
-      labels: { show: false },
-      tooltip: { enabled: false },
-      axisBorder: { show: false },
-      axisTicks: { show: false },
-    },
-    yaxis: {
-      labels: { show: false },
-      axisBorder: { show: false },
-      axisTicks: { show: false },
-      crosshairs: { show: false },
-      tooltip: { enabled: false },
-    },
-    grid: { show: false },
-  });
+  const [options] = useState(smallChartsOptions);
 
   useEffect(() => {
-    if (data?.["Meta Data"]) {
+    if (data) {
       const dataObject = data["Time Series (Digital Currency Daily)"];
 
       const formattedObject = {
@@ -64,12 +29,12 @@ export default function StockPriceSmallCharts() {
         volume: [],
       };
 
-      let keys = Object.keys(dataObject);
+      const keys = Object.keys(dataObject);
       for (let i = 0; i < keys.length; i++) {
         if (i >= 16) break;
 
-        let key = keys[i];
-        let obj = dataObject[key];
+        const key = keys[i];
+        const obj = dataObject[key];
 
         formattedObject.open.unshift(obj["1a. open (USD)"]);
         formattedObject.high.unshift(obj["2a. high (USD)"]);
@@ -90,8 +55,11 @@ export default function StockPriceSmallCharts() {
   }, [data]);
 
   return (
-    <div className="col-span-5 row-span-1 pl-4 text-xs text-gray-500 uppercase">
-      <div className="flex items-center w-full justify-evenly">
+    <motion.div
+      variants={gridItem}
+      className="col-span-5 row-span-1 pl-4 text-xs text-gray-500 uppercase"
+    >
+      <div className="flex items-center w-full h-full border border-gray-700 justify-evenly">
         <h1>Open</h1>
         {renderChart && typeof window !== "undefined" && (
           <Chart options={options} series={open} width="72px" height="24px" />
@@ -113,6 +81,6 @@ export default function StockPriceSmallCharts() {
           <Chart options={options} series={volume} width="72px" height="24px" />
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -21,7 +21,7 @@ export default function ForecastChart() {
       },
     ]);
 
-    const renderDelay = setTimeout(() => setRenderChart(true), 1500);
+    const renderDelay = setTimeout(() => setRenderChart(true), 500);
 
     return () => clearTimeout(renderDelay);
   }, [data]);
@@ -30,7 +30,7 @@ export default function ForecastChart() {
     <div className="flex-grow">
       {renderChart && (
         <motion.div
-          className="h-full"
+          className="h-full origin-bottom"
           variants={forecastChartAnimation}
           initial="hidden"
           animate="show"

@@ -6,7 +6,7 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: "media",
   theme: {
     extend: {
       fontSize: {
@@ -38,7 +38,7 @@ module.exports = {
       black: "black",
       white: "white",
       green: colors.green,
-      gray: colors.trueGray,
+      gray: colors.neutral,
       red: colors.red,
       blue: colors.sky,
       yellow: colors.amber,

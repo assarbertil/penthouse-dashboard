@@ -16,7 +16,7 @@ export const forecastChartOptions = {
     },
   },
   dataLabels: { enabled: false },
-  fill: { colors: "#0C4A6E" },
+  fill: { colors: "#0C4A6E", opacity: 1 },
   tooltip: { enabled: false },
   legend: { show: false },
   xaxis: {
