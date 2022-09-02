@@ -80,7 +80,7 @@ var data = [
 
   { lat: -34.603333, lng: -58.381667, label: "Buenos Aires" },
 
-  { lat: 28.127222, lng: 15.431389, label: "Las Palmas" },
+  { lat: 28.07, lng: 15.25, label: "Las Palmas" },
   { lat: 30.06263, lng: 31.24967, label: "Cairo" },
 
   { lat: 13.45, lng: 100.3, label: "Bangkok" },
